@@ -1,5 +1,50 @@
-# beepblorp
-BeepBlorp is a very simple C++ example of a tool that makes a connection to a website (in this case [beepblorp.com](http://beepblorp.com) and just logs / outputs the web page content.  
+# BeepBlorp
+
+**BeepBlorp** is a simple C++ program that retrieves either the HTML content or a PNG image from a specified URL. The program can display the HTML content directly in the console or extract and display the last 40 bytes of a PNG image as a string.
+
+## Features
+- Retrieve and display HTML content from a specified URL.
+- Retrieve a PNG image from a specified URL and display the last 40 bytes of the image data as a string.
+
+## Usage
+To use the program, compile it using a C++14 compatible compiler and run it with the following command-line arguments:  
+ `beepblorp.exe <url> <html|png>`
+
+## Examples
+- Retrieve and display HTML content:  
+ `beepblorp.exe example.com html`
+
+- Retrieve a PNG image and display the last 40 bytes of its data:  
+ `beepblorp.exe example.com png`
+
+# Code Overview
+
+The program performs the following steps:
+
+1. **Command Line Argument Parsing**:  
+   Checks if the correct number of arguments are provided and assigns the URL and file type.
+
+2. **HTTP GET Request Construction**:  
+   Constructs the appropriate HTTP GET request based on the file type (`html` or `png`).
+
+3. **Socket Initialization**:  
+   Initializes Winsock and creates a socket for communication.
+
+4. **Server Connection**:  
+   Connects to the server specified by the URL.
+
+5. **Data Transmission**:  
+   Sends the HTTP GET request to the server.
+
+6. **Data Reception**:  
+   Receives the response data from the server.
+
+7. **Data Processing**:  
+   - **For HTML**: Extracts and displays the HTML content.  
+   - **For PNG**: Extracts the last 40 bytes of the image data and displays it as a string.
+
+8. **Cleanup**:  
+   Closes the socket and cleans up Winsock resources.
 
 
 # Legal Disclaimer
