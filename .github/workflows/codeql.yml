@@ -37,15 +37,10 @@ jobs:
         build-mode: ${{ matrix.build-mode }}
 
     - if: matrix.build-mode == 'manual' && matrix.language == 'c-cpp'
-      shell: bash
+      shell: cmd
       run: |
-        echo 'Building C++ application on Windows'
-        # Add the commands to build your C++ application here
-        # For example:
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build .
+        echo 'Building C++ application on Windows using msbuild'
+        msbuild /t:Clean,Build /p:Configuration=Release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
