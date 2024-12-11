@@ -39,6 +39,8 @@ jobs:
     - if: matrix.build-mode == 'manual' && matrix.language == 'c-cpp'
       shell: cmd
       run: |
+        echo 'Installing Visual Studio Build Tools'
+        choco install visualstudio2019buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --includeOptional"
         echo 'Building C++ application on Windows using msbuild'
         msbuild /t:Clean,Build /p:Configuration=Release
 
